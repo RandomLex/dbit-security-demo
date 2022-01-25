@@ -13,6 +13,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -26,8 +28,9 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @EnableJpaRepositories(basePackages = "com.dbit.repositories")
+@EnableWebSecurity
 @PropertySource("classpath:db.properties")
-public class ApplicationConfig implements WebMvcConfigurer {
+public class ApplicationConfig extends AbstractSecurityWebApplicationInitializer implements WebMvcConfigurer {
 
     @Bean
     public DataSource dataSource(
