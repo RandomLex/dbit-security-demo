@@ -6,9 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 import javax.sql.DataSource;
@@ -22,6 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index.html").permitAll()
                 .antMatchers("/api/employees").authenticated()
                 .antMatchers("/info").hasRole("ADMIN")
+                .antMatchers("/self").hasAnyRole("USER", "ADMIN")
                 .and().formLogin()
                 .and().httpBasic()
                 .and().logout().logoutSuccessUrl("/");
