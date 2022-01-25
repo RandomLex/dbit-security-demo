@@ -7,6 +7,9 @@
 </head>
 <body>
 
+<c:out value="Текущий пользователь ${requestScope.principal.name}"/>
+<br>
+<br>
 <table>
     <th>Имя</th><th>Зарплата</th>
     <c:forEach var="employee" items="${requestScope.employees}">
@@ -16,6 +19,8 @@
         </tr>
     </c:forEach>
 </table>
-
+<footer>
+    <p><a href="logout">Logout</a></p>
+</footer>
 </body>
 </html>
