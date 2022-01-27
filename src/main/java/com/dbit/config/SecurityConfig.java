@@ -25,7 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/self").hasRole("USER")
                 .and().formLogin()
                 .and().httpBasic()
-                .and().logout().logoutSuccessUrl("/");
+                .and().logout().logoutSuccessUrl("/")
+                .and().csrf().disable();
     }
 
     @Bean

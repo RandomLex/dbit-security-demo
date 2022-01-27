@@ -24,4 +24,8 @@ public class EmployeeService {
         Optional<Employee> employee = repository.findByName(name);
         return employee.map(employeeModelDtoConvertor::convert);
     }
+
+    public Employee save(Employee employee) {
+        return repository.save(employee);
+    }
 }

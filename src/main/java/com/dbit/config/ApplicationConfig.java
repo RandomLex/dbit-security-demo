@@ -13,6 +13,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -30,6 +31,7 @@ import java.util.Properties;
 @EnableAspectJAutoProxy
 @EnableJpaRepositories(basePackages = "com.dbit.repositories")
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
 public class ApplicationConfig extends AbstractSecurityWebApplicationInitializer implements WebMvcConfigurer {
