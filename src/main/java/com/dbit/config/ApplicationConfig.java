@@ -15,6 +15,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -30,6 +31,7 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "com.dbit.repositories")
 @EnableWebSecurity
 @PropertySource("classpath:db.properties")
+@EnableTransactionManagement
 public class ApplicationConfig extends AbstractSecurityWebApplicationInitializer implements WebMvcConfigurer {
 
     @Bean
@@ -72,7 +74,7 @@ public class ApplicationConfig extends AbstractSecurityWebApplicationInitializer
         properties.setProperty("hibernate.dbcp.maxIdle", "10");
         properties.setProperty("hibernate.dbcp.minIdle", "5");
         properties.setProperty("hibernate.dbcp.maxWaitMillis", "-1");
-        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+//        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
         return properties;
     }
 
